@@ -13,6 +13,7 @@
 class GameObject
 {
   public PVector position;
+  public PVector aiPosition;
   public PVector playerPosition;
   public PVector bulletPosition;
   public PVector starPosition;
@@ -35,6 +36,7 @@ class GameObject
   GameObject(float x, float y)
   {
     position = new PVector(x, y);
+    aiPosition = new PVector(x, y);
     starPosition = new PVector(x, y);
     bulletPosition = new PVector(x, y);
     playerPosition = new PVector(x, y);

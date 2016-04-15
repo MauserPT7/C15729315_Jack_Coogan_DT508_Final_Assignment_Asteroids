@@ -20,6 +20,7 @@ class Bullet extends GameObject
     
     strokeWeight(2);
     stroke(0, 200, 255);
+    ellipse(0, 0, 10, 10);
     line(8, -25, 8, -5);
     line(-8, -25, -8, -5);
     
@@ -57,6 +58,15 @@ class Bullet extends GameObject
     if(bulletLifetime <= 0)
     {
       bullets.remove(this);
+    }
+    
+    if(aiPosition.x <= bulletPosition.x
+    && aiPosition.x + 5 >= bulletPosition.x
+    && aiPosition.y <= bulletPosition.y
+    && aiPosition.y + 5 >= bulletPosition.y)
+    {
+      //gameObjects.remove(this);
+      println("Direct Hit");
     }
   }
 }

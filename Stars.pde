@@ -1,3 +1,4 @@
+// WIP, not yet implemented
 class Star extends GameObject
 {
   float mass;

@@ -32,10 +32,9 @@ void setup()
   smooth();
   
   // instances of the class should have a lower case character
-  gameObjects.add(new Player(100, 100));
+  gameObjects.add(new Player(width / 2, height / 2));
   gameObjects.add(new AIShip(50, 50));
   gameObjects.add(new Star(200, 200));
-  //bullets.add(new Bullet(1000, 1000, 0));
 
   keys = new boolean[5];
   keys[0] = false; // 'w'
