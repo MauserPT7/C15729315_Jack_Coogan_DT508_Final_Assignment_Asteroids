@@ -9,12 +9,18 @@
 // Change in accerlation; time = 
 // Mass, Acceleration, Force; A = F / M
 
+import ddf.minim.*;
+
+AudioPlayer[] audioPlayer;
+Minim minim;
+
 Player player;
 AIShip aiShip;
 Bullet bullet;
 Star star;
 
 boolean[] keys;
+boolean mainMenu = true;
 
 ArrayList < GameObject > gameObjects = new ArrayList < GameObject > ();
 ArrayList < Bullet > bullets = new ArrayList < Bullet > (3);
@@ -42,6 +48,13 @@ void setup()
   keys[2] = false; // 'a'
   keys[3] = false; // 'd'
   keys[4] = false; // 'space'
+  
+  minim = new Minim(this);
+  audioPlayer = new AudioPlayer[2];
+  
+  audioPlayer[0] = minim.loadFile("thrusters.wav");
+  audioPlayer[1] = minim.loadFile("lazer.wav");
+  //audioPlayers[0].loop();
 }
 
 void draw()

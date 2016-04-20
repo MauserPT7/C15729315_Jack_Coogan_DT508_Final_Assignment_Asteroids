@@ -82,8 +82,16 @@ class Player extends GameObject
       
       ExhaustFumes ex = new ExhaustFumes(playerPosition.x, playerPosition.y, theta);
       gameObjects.add(ex);
+      audioPlayer[0].play();
     }
     
+    else if(!keys[0])
+    {
+      audioPlayer[0].rewind();
+      //audioPlayer[0].loop();
+      //minim.stop();
+    }
+      
     // keys[1] ('s') is not used as there is no reverse thrust for the player
      
     if(keys[2])
@@ -105,6 +113,8 @@ class Player extends GameObject
       {
         bullets.add(bullet);
         shotRate = 30;
+        audioPlayer[1].play();
+        audioPlayer[1].rewind();
       }
     }
     

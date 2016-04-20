@@ -19,7 +19,7 @@ class AIShip extends GameObject
     
     translate(aiPosition.x, aiPosition.y); // You write these in the opposite order you want them to happen
     rotate(theta);                     // This means rotate first and then translate
-    ellipse(0, 0, 10, 10);
+   // ellipse(0, 0, 10, 10);
     quad(0, offset + (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     line(8, -15, 10, 0);
     line(-8, -15, -10, 0);
