@@ -18,6 +18,7 @@ Player player;
 AIShip aiShip;
 Bullet bullet;
 Star star;
+Asteroid asteroid;
 
 boolean[] keys;
 boolean mainMenu = true;
@@ -25,6 +26,7 @@ boolean mainMenu = true;
 ArrayList < GameObject > gameObjects = new ArrayList < GameObject > ();
 ArrayList < Bullet > bullets = new ArrayList < Bullet > (3);
 ArrayList < Star > stars = new ArrayList < Star > (25);
+ArrayList < Asteroid > asteroids = new ArrayList < Asteroid > (20);
 
 float mass;
 float time;
@@ -41,6 +43,7 @@ void setup()
   gameObjects.add(new Player(width / 2, height / 2));
   gameObjects.add(new AIShip(50, 50));
   gameObjects.add(new Star(200, 200));
+  gameObjects.add(new Asteroid(100, 100));
 
   keys = new boolean[5];
   keys[0] = false; // 'w'
@@ -86,10 +89,37 @@ void draw()
     }
   }
   
+  for(int i = 0 ; i < asteroids.size() ; i++)
+  {
+    
+  }
+  
   // Menu
-  /*
-  fill(200, 70);
-  noStroke();
-  rect(0, 0, width, 50);
-  */
+  if(mainMenu == true)
+  {
+    fill(200);
+    noStroke();
+    rect(0, 0, width, height);
+    fill(0);
+    text("ASTEROIDS", 300 , 110);
+    fill(255);
+    rect(width / 2 - 150, height / 2 - 100, 300, 200);
+    fill(0);
+    textSize(30);
+    text("Welcome!", 333, 230);
+    line(320, 240, 480, 240);
+    textSize(20);
+    text("USE W, A + D TO MOVE", 330, 280);
+    text("SPACE TO SHOOT", 305, 300);
+    text("Press any key to continue", 280, 340);
+    text("Enjoy!", 375, 380);
+    textSize(15);
+    text("Jack Coogan - C15729315", 10, 590);
+    
+    if(mainMenu == true
+    && keyPressed)
+    {
+      mainMenu = false;
+    }
+  }
 }

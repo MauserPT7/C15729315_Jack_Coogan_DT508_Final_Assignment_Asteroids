@@ -1,5 +1,5 @@
 class Bullet extends GameObject
-{ 
+{   
   Bullet()
   {
     super();
@@ -68,5 +68,10 @@ class Bullet extends GameObject
       bullets.remove(this);
       println("Direct Hit");
     }
+  }
+  
+  //boolean collisionCheck(ArrayList <Star> stars)
+  {
+    
   }
 }

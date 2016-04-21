@@ -3,6 +3,7 @@ class Star extends GameObject
 {
   float mass;
   float timeDelta = 1.0f / 60.0f;
+  float radius;
   PVector speed;
   PVector acceleration;
   PVector force;
@@ -18,6 +19,7 @@ class Star extends GameObject
     force = new PVector();
     acceleration = new PVector();
     mass = 1.0f;
+    radius = 25;
   }
 
   void render()
@@ -25,11 +27,7 @@ class Star extends GameObject
     pushMatrix();
 
     translate(starPosition.x, starPosition.y);
-    // rotate(theta);
-
-    strokeWeight(8);
-    stroke(0, 200, 250);
-    noFill(); 
+    ellipse(0, 0, radius, radius);
     
     popMatrix();
   }
