@@ -1,5 +1,5 @@
 class Asteroid extends GameObject
-{
+{ 
   Asteroid()
   {
     super();
@@ -8,15 +8,17 @@ class Asteroid extends GameObject
   Asteroid(float x, float y, int size)
   {
     super(x, y);
+    radius = 20;
   }
   
   void render()
   {
     pushMatrix();
     
-    translate(bulletPosition.x, bulletPosition.y);
+    translate(position.x, position.y);
     rotate(theta);
-    rect(100, 100, 10, 10);
+    ellipse(0, 0, radius, radius);
+    
     popMatrix();
   }
   

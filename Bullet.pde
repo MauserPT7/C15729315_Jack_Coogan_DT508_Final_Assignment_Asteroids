@@ -9,6 +9,7 @@ class Bullet extends GameObject
   {
     super(x, y);
     this.theta = theta;
+    radius = 50;
   }
   
   void renderBullet()
@@ -20,11 +21,27 @@ class Bullet extends GameObject
     
     strokeWeight(2);
     stroke(0, 200, 255);
-    //ellipse(0, 0, 10, 10);
+    ellipse(0, 0, 10, 10);
     line(8, -25, 8, -5);
     line(-8, -25, -8, -5);
     
     popMatrix();
+  }
+  
+  boolean CollisionCheck(ArrayList < Asteroid > asteroids)
+  {
+    for(Asteroid asteroid : asteroids)
+    {
+      PVector distance = PVector.sub(bulletPosition, asteroid.position);
+      
+      if(distance.mag() <= asteroid.radius + radius)
+      {
+        println("Direct Hit!");
+        return true;
+      }
+    }
+    
+    return false;
   }
   
   void updateBullet()
@@ -59,19 +76,5 @@ class Bullet extends GameObject
     {
       bullets.remove(this);
     }
-    
-    if(aiPosition.x -25 >= bulletPosition.x
-    && aiPosition.x + 25 <= bulletPosition.x
-    && aiPosition.y -25 >= bulletPosition.y
-    && aiPosition.y + 25 <= bulletPosition.y)
-    {
-      bullets.remove(this);
-      println("Direct Hit");
-    }
-  }
-  
-  //boolean collisionCheck(ArrayList <Star> stars)
-  {
-    
   }
 }

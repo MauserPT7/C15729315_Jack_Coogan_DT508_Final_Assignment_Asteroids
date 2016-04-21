@@ -26,10 +26,11 @@ boolean mainMenu = true;
 ArrayList < GameObject > gameObjects = new ArrayList < GameObject > ();
 ArrayList < Bullet > bullets = new ArrayList < Bullet > (3);
 ArrayList < Star > stars = new ArrayList < Star > (25);
-ArrayList < Asteroid > asteroids = new ArrayList < Asteroid > (20);
+ArrayList < Asteroid > asteroids = new ArrayList < Asteroid > ();
 
 float mass;
 float time;
+float asteroidCount;
 PVector speed;
 PVector acceleration;
 PVector force;
@@ -39,11 +40,12 @@ void setup()
   size(1000, 600);
   smooth();
   
+  asteroidCount = 10;
+  
   // instances of the class should have a lower case character
   gameObjects.add(new Player(width / 2, height / 2));
   gameObjects.add(new AIShip(50, 50));
   gameObjects.add(new Star(200, 200));
-  gameObjects.add(new Asteroid(100, 100));
 
   keys = new boolean[5];
   keys[0] = false; // 'w'
@@ -58,6 +60,11 @@ void setup()
   audioPlayer[0] = minim.loadFile("thrusters.wav");
   audioPlayer[1] = minim.loadFile("lazer.wav");
   //audioPlayers[0].loop();
+  
+  for(int i = 0 ; i < asteroidCount ; i++)
+  {
+    asteroids.add(new Asteroid(random(10, width - 10), random(10, height - 10), 0));
+  }
 }
 
 void draw()
@@ -91,7 +98,9 @@ void draw()
   
   for(int i = 0 ; i < asteroids.size() ; i++)
   {
-    
+    Asteroid asteroid = asteroids.get(i);
+    asteroid.render();
+    asteroid.update();
   }
   
   // Menu

@@ -29,6 +29,8 @@ class GameObject
   float lazerColour;
   float exhaustColour;
   
+  float radius;
+  
   int shotRate;
   int shotTime;
   int bulletLifetime;
