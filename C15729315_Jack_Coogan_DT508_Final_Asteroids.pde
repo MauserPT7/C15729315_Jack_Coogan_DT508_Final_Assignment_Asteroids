@@ -107,9 +107,12 @@ void draw()
   // Renders other objects like the player and ai
   for(int i = 0 ; i < gameObjects.size() ; i++)
   {
-    GameObject gameObject = gameObjects.get(i);
-    gameObject.update();
-    gameObject.render();
+    if(mainMenu == false)
+    {
+      GameObject gameObject = gameObjects.get(i);
+      gameObject.update();
+      gameObject.render();
+    }
   }
   
   // Calls the Main Menu function

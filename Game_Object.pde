@@ -56,14 +56,4 @@ class GameObject
   {
     
   }
-  
-  public void renderBullet()
-  {
-    
-  }
-  
-  public void updateBullet()
-  {
-    
-  }
 }

@@ -34,13 +34,13 @@ class Bullet extends GameObject
     popMatrix();
   }
   
-  boolean CollisionCheck(ArrayList < Asteroid > asteroids)
+  boolean collisionCheck(ArrayList < Asteroid > asteroids)
   {
     for(Asteroid asteroid : asteroids)
     {
-      PVector distance = PVector.sub(position, asteroid.position);
+      PVector distance = PVector.sub(bullet.position, asteroid.position);
       
-      if(distance.magSq() <= 150)
+      if(distance.mag() <= 1000)
       {
         println("Direct Hit!");
         return true;
