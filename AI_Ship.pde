@@ -1,3 +1,4 @@
+// A red, AI ship that flies around
 class AIShip extends GameObject
 {
   AIShip()
@@ -12,32 +13,39 @@ class AIShip extends GameObject
   
   void render()
   {    
-    pushMatrix();                      // Store the old transform
+    pushMatrix();                      
     
-    translate(position.x, position.y); // You write these in the opposite order you want them to happen
-    rotate(theta);                     // This means rotate first and then translate
-    //ellipse(0, 0, 10, 10);
+    translate(position.x, position.y);
+    rotate(theta);
+    
     strokeWeight(8);
-    noFill();
-    stroke(225, 0, 0);
     strokeCap(BEVEL);
+    stroke(225, 0, 0);
+    
+    noFill();
+    
     quad(0, offset + (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
-    line(8, -15, 10, 0);
-    line(-8, -15, -10, 0);
+    line(8, -18, 10, 0);
+    line(-8, -18, -10, 0);
     
     strokeWeight(3);
     stroke(100, 0, 0);
+    
     quad(0, offset + (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     line(8, -15, 10, 0);
     line(-8, -15, -10, 0);
     
-    popMatrix();                       // Restore the old transform
+    // Center-Point
+    //ellipse(0, 0, 5, 5);
+    
+    popMatrix();
   }
   
   void update()
   {
     forward.x = sin(theta) * shipSpeed;
     forward.y = - cos(theta) * shipSpeed;
+    
     position.add(forward);
    
     ExhaustFumes ex = new ExhaustFumes(position.x, position.y, theta);

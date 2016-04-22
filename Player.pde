@@ -1,3 +1,4 @@
+// The character the player controls in the game
 class Player extends GameObject
 {
   float mass;
@@ -21,17 +22,17 @@ class Player extends GameObject
   
   void render()
   {   
-    pushMatrix();                      // Store the old transform
+    pushMatrix();
     
-    translate(position.x, position.y); // You write these in the opposite order you want them to happen
-    rotate(theta);                     // This means rotate first and then translate
+    translate(position.x, position.y);
+    rotate(theta);                     
     
     strokeWeight(8);
     stroke(0, 200, 250);
     noFill();
     strokeCap(BEVEL);
-    line(8, -23, 8, 0);
-    line(-8, -23, -8, 0);
+    line(8, -23, 8, -3);
+    line(-8, -23, -8, -3);
     quad(0, (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     
     strokeWeight(3);
@@ -41,7 +42,7 @@ class Player extends GameObject
     quad(0, (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     
     
-    popMatrix(); // Restore the old transform
+    popMatrix();
   }
   
   void update()
@@ -50,12 +51,7 @@ class Player extends GameObject
     forward.y = - cos(theta) * shipSpeed;
     
     shotRate--;
-    
-    /*
-    velocity.x = forward.x;
-    velocity.y = forward.y;
-    */
-    
+   
     if(position.y <= -10)
     {
       position.y = height;
@@ -88,8 +84,6 @@ class Player extends GameObject
     else if(!keys[0])
     {
       audioPlayer[0].rewind();
-      //audioPlayer[0].loop();
-      //minim.stop();
     }
       
     // keys[1] ('s') is not used as there is no reverse thrust for the player

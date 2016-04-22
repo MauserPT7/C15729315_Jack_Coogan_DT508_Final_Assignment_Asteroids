@@ -1,3 +1,4 @@
+// Toggles keys on and off for multiple key-pressing
 void keyPressed()
 {
   if(key == 'w')

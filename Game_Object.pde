@@ -1,22 +1,28 @@
 // This class is a global class for both the player and AI ships
 class GameObject
 {
+  // General positioning and game physics
   public PVector position;
-  public PVector starPosition;
   
   PVector forward;
   PVector velocity;
   
-  float offset;
   float theta;
+  
+  // Player + AI
+  float offset;
   float shipSpeed;
+  
+  // Exhaust Fumes
   float exhaustSize;
-  float alpha;
-  float lazerColour;
   float exhaustColour;
+  float alpha;
   
+  // Asteroids
   float radius;
+  float trajectory;
   
+  // Bullets
   int shotRate;
   int shotTime;
   int bulletLifetime;
@@ -27,19 +33,16 @@ class GameObject
     
     forward = new PVector(0, -1);
     velocity = new PVector(0, 0);
+    theta = 0;
     
     offset = 20;
-    theta = 0;
     shipSpeed = 2.5;
-    
-    exhaustSize = random(5, 30);
     
     shotRate = 30;
     bulletLifetime = 120;
     
     alpha = 100;
-    lazerColour = color(0, 0, 255);
-    exhaustColour = color(255, 0, 0);
+    exhaustSize = random(5, 30);
   }
   
   GameObject()

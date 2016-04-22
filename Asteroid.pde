@@ -1,7 +1,6 @@
+// Grey rocks that the player shoots
 class Asteroid extends GameObject
-{ 
-  float trajectory;
-  
+{  
   Asteroid()
   {
     super();
@@ -10,28 +9,33 @@ class Asteroid extends GameObject
   Asteroid(float x, float y, int size)
   {
     super(x, y);
-    radius = random(10, 35);
+    
     theta = random(-200, 200);
     trajectory = random(-2, 2);
+    
+    radius = random(10, 35);
   }
   
   void render()
   {
-    
     pushMatrix();
     
     translate(position.x, position.y);
+    rotate(theta);
     
     strokeWeight(8);
     stroke(140);
+    
     noFill();
-    rotate(theta);
+    
     rect(0, 0, radius, radius);
     
     strokeWeight(3);
     stroke(100);
+    
     rect(0, 0, radius, radius);
     
+    // Center-Point
     //ellipse(0, 0, 5, 5);
     
     popMatrix();
@@ -40,7 +44,8 @@ class Asteroid extends GameObject
   void update()
   {
     forward.x = sin(trajectory) * trajectory;
-    forward.y = - cos(trajectory) * trajectory;    
+    forward.y = - cos(trajectory) * trajectory;
+    
     position.add(forward);
     
     theta -= 0.01f;

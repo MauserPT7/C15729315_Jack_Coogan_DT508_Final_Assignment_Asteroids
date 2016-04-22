@@ -1,3 +1,4 @@
+// The projectile the player shoots
 class Bullet extends GameObject
 {   
   Bullet()
@@ -9,6 +10,7 @@ class Bullet extends GameObject
   {
     super(x, y);
     this.theta = theta;
+    
     radius = 50;
   }
   
@@ -19,17 +21,14 @@ class Bullet extends GameObject
     translate(position.x, position.y);
     rotate(theta);
     
-    /*
-    noStroke();
-    noFill();
-    rect(-25, -25, radius, radius);
-    */
-    
     strokeWeight(4);
     stroke(0, 255, 40);
-    //ellipse(0, 0, 10, 10);
+    
     line(8, -25, 8, -5);
     line(-8, -25, -8, -5);
+    
+    // Center-Point
+    //ellipse(0, 0, 5, 5);
     
     popMatrix();
   }
@@ -54,6 +53,7 @@ class Bullet extends GameObject
   {
     forward.x = sin(theta) * 10;
     forward.y = - cos(theta) * 10;
+    
     position.add(forward);
     
     bulletLifetime--;

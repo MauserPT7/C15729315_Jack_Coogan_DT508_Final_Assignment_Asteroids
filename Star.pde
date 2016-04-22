@@ -1,4 +1,4 @@
-// WIP, not yet implemented
+// The stars that render in the background, moves with the player
 class Star extends GameObject
 {
   float mass;

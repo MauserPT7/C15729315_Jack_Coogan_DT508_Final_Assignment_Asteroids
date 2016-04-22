@@ -1,3 +1,4 @@
+// The blue exhaust that spurts from the spaceships
 class ExhaustFumes extends GameObject
 {
   ExhaustFumes()
@@ -20,7 +21,9 @@ class ExhaustFumes extends GameObject
     
     strokeWeight(6);
     stroke(0, 0, 100, alpha);
+    
     fill(0, 0, 100, alpha);
+    
     ellipse(0, 30, exhaustSize, exhaustSize);
     
     popMatrix();
@@ -32,6 +35,7 @@ class ExhaustFumes extends GameObject
     forward.y = - cos(theta) * 2;
     
     position.sub(forward);
+    
     alpha -= 8;
     
     if(alpha <= 0)

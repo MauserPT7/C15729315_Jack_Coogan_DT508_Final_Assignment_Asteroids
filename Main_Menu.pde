@@ -1,5 +1,5 @@
 // Deals with creating and interacting with the main menu
-
+// Shows some text 'in' the gameworld, with instructions on what to do + the games creator and student number
 void mainMenu()
 {
   if(mainMenu == true)
