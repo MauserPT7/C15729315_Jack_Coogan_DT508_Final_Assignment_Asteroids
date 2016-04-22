@@ -16,12 +16,18 @@ class Bullet extends GameObject
   {
     pushMatrix();
     
-    translate(bulletPosition.x, bulletPosition.y);
+    translate(position.x, position.y);
     rotate(theta);
     
-    strokeWeight(2);
-    stroke(0, 200, 255);
-    ellipse(0, 0, 10, 10);
+    /*
+    noStroke();
+    noFill();
+    rect(-25, -25, radius, radius);
+    */
+    
+    strokeWeight(4);
+    stroke(0, 255, 40);
+    //ellipse(0, 0, 10, 10);
     line(8, -25, 8, -5);
     line(-8, -25, -8, -5);
     
@@ -32,9 +38,9 @@ class Bullet extends GameObject
   {
     for(Asteroid asteroid : asteroids)
     {
-      PVector distance = PVector.sub(bulletPosition, asteroid.position);
+      PVector distance = PVector.sub(bullet.bulletPosition, asteroid.position);
       
-      if(distance.mag() <= asteroid.radius + radius)
+      if(distance.magSq() <= 150)
       {
         println("Direct Hit!");
         return true;
@@ -48,28 +54,28 @@ class Bullet extends GameObject
   {
     forward.x = sin(theta) * 10;
     forward.y = - cos(theta) * 10;
-    bulletPosition.add(forward);
+    position.add(forward);
     
     bulletLifetime--;
 
-    if(bulletPosition.y <= -10)
+    if(position.y <= -10)
     {
-      bulletPosition.y = height;
+      position.y = height;
     }
       
-    if(bulletPosition.x >= width + 10)
+    if(position.x >= width + 10)
     {
-      bulletPosition.x = 0;
+      position.x = 0;
     }
       
-    if(bulletPosition.y >= height + 10)
+    if(position.y >= height + 10)
     {
-      bulletPosition.y = 0;
+      position.y = 0;
     }
       
-    if(bulletPosition.x <= -10)
+    if(position.x <= -10)
     {
-      bulletPosition.x = width;
+      position.x = width;
     }
     
     if(bulletLifetime <= 0)

@@ -16,14 +16,14 @@ class Player extends GameObject
     super(x, y);
     force = new PVector();
     acceleration = new PVector();
-    mass = 1.0f;
+    mass = 0.7f;
   }
   
   void render()
   {   
     pushMatrix();                      // Store the old transform
     
-    translate(playerPosition.x, playerPosition.y); // You write these in the opposite order you want them to happen
+    translate(position.x, position.y); // You write these in the opposite order you want them to happen
     rotate(theta);                     // This means rotate first and then translate
     
     strokeWeight(8);
@@ -56,31 +56,31 @@ class Player extends GameObject
     velocity.y = forward.y;
     */
     
-    if(playerPosition.y <= -10)
+    if(position.y <= -10)
     {
-      playerPosition.y = height;
+      position.y = height;
     }
       
-    if(playerPosition.x >= width + 10)
+    if(position.x >= width + 10)
     {
-      playerPosition.x = 0;
+      position.x = 0;
     }
       
-    if(playerPosition.y >= height + 10)
+    if(position.y >= height + 10)
     {
-      playerPosition.y = 0;
+      position.y = 0;
     }
       
-    if(playerPosition.x <= -10)
+    if(position.x <= -10)
     {
-      playerPosition.x = width;
+      position.x = width;
     }
     
     if(keys[0])
     {
       force.add(PVector.mult(forward, 100));
       
-      ExhaustFumes ex = new ExhaustFumes(playerPosition.x, playerPosition.y, theta);
+      ExhaustFumes ex = new ExhaustFumes(position.x, position.y, theta);
       gameObjects.add(ex);
       audioPlayer[0].play();
     }
@@ -107,7 +107,7 @@ class Player extends GameObject
     if(keys[4]
     && bullets.size() <= 2)
     {
-      Bullet bullet = new Bullet(playerPosition.x, playerPosition.y, theta);
+      Bullet bullet = new Bullet(position.x, position.y, theta);
       
       if(shotRate <= 0)
       {
@@ -120,7 +120,7 @@ class Player extends GameObject
     
     acceleration = PVector.div(force, mass);
     velocity.add(PVector.mult(acceleration, timeDelta));
-    playerPosition.add(PVector.mult(velocity, timeDelta));
+    position.add(PVector.mult(velocity, timeDelta));
     velocity.mult(0.99f);
     force.x = force.y = 0;
   }

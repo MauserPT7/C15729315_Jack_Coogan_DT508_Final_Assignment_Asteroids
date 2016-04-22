@@ -19,14 +19,17 @@ class Star extends GameObject
     force = new PVector();
     acceleration = new PVector();
     mass = 1.0f;
-    radius = 25;
+    radius = random(1, 3);
   }
 
   void render()
   {
     pushMatrix();
-
-    translate(starPosition.x, starPosition.y);
+    
+    strokeWeight(2);
+    stroke(255 , 50);
+    fill(255, 255, 200);
+    translate(position.x, position.y);
     ellipse(0, 0, radius, radius);
     
     popMatrix();
@@ -34,27 +37,27 @@ class Star extends GameObject
 
   void update()
   {
-    forward.x = sin(theta) * shipSpeed;
-    forward.y = - cos(theta) * shipSpeed;
+    forward.x = sin(theta);
+    forward.y = - cos(theta);
 
-    if (starPosition.y <= -10)
+    if (position.y <= -10)
     {
-      starPosition.y = height;
+      position.y = height;
     }
 
-    if (starPosition.x >= width + 10)
+    if (position.x >= width + 10)
     {
-      starPosition.x = 0;
+      position.x = 0;
     }
 
-    if (starPosition.y >= height + 10)
+    if (position.y >= height + 10)
     {
-      starPosition.y = 0;
+      position.y = 0;
     }
 
-    if (starPosition.x <= -10)
+    if (position.x <= -10)
     {
-      starPosition.x = width;
+      position.x = width;
     }
 
     if (keys[0])
@@ -74,7 +77,7 @@ class Star extends GameObject
 
     acceleration = PVector.div(force, mass);
     velocity.add(PVector.mult(acceleration, timeDelta));
-    starPosition.add(PVector.mult(velocity, timeDelta));
+    position.add(PVector.mult(velocity, timeDelta));
     velocity.mult(0.99f);
     force.x = force.y = 0;
   }

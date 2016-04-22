@@ -25,27 +25,30 @@ boolean mainMenu = true;
 
 ArrayList < GameObject > gameObjects = new ArrayList < GameObject > ();
 ArrayList < Bullet > bullets = new ArrayList < Bullet > (3);
-ArrayList < Star > stars = new ArrayList < Star > (25);
+ArrayList < Star > stars = new ArrayList < Star > ();
 ArrayList < Asteroid > asteroids = new ArrayList < Asteroid > ();
 
 float mass;
 float time;
 float asteroidCount;
+float starCount;
+
 PVector speed;
 PVector acceleration;
 PVector force;
 
 void setup()
 {
-  size(1000, 600);
+  size(1200, 600);
   smooth();
   
   asteroidCount = 10;
+  starCount = 255;
   
   // instances of the class should have a lower case character
-  gameObjects.add(new Player(width / 2, height / 2));
-  gameObjects.add(new AIShip(50, 50));
   gameObjects.add(new Star(200, 200));
+  gameObjects.add(new AIShip(50, 50));
+  gameObjects.add(new Player(width / 2, height / 2));
 
   keys = new boolean[5];
   keys[0] = false; // 'w'
@@ -61,6 +64,11 @@ void setup()
   audioPlayer[1] = minim.loadFile("lazer.wav");
   //audioPlayers[0].loop();
   
+  for(int i = 0 ; i < starCount ; i++)
+  {
+    stars.add(new Star(random(10, width - 10), random(10, height - 10)));
+  }
+  
   for(int i = 0 ; i < asteroidCount ; i++)
   {
     asteroids.add(new Asteroid(random(10, width - 10), random(10, height - 10), 0));
@@ -71,14 +79,23 @@ void draw()
 { 
   background(20);
   
-  for(int i = 0 ; i < gameObjects.size() ; i++)
+  // Renders stars under everything else
+  for(int i = 0 ; i < stars.size() ; i++)
   {
-    GameObject gameObject = gameObjects.get(i);
-    gameObject.update();
-    gameObject.render();
+    Star star = stars.get(i);
+    star.render();
+    star.update();
   }
   
-  // Deals with rendering bullets
+  // Renders asteroids
+  for(int i = 0 ; i < asteroids.size() ; i++)
+  {
+    Asteroid asteroid = asteroids.get(i);
+    asteroid.render();
+    asteroid.update();
+  }
+
+  // Renders bullets
   for(int i = 0 ; i < bullets.size() ; i++)
   {
     Bullet bullet = bullets.get(i);
@@ -86,7 +103,7 @@ void draw()
     bullet.renderBullet();
   }
   
-  // Deals with keeping the total amount of bullets at 3
+  // Deals with keeping the total amount of bullets allowed in the scene at 3.
   for(int i = bullets.size() - 1 ; i >= 0 ; i--)
   {
     if(bullets.size() >= 4)
@@ -96,39 +113,14 @@ void draw()
     }
   }
   
-  for(int i = 0 ; i < asteroids.size() ; i++)
+  // Renders other objects like the player and ai
+  for(int i = 0 ; i < gameObjects.size() ; i++)
   {
-    Asteroid asteroid = asteroids.get(i);
-    asteroid.render();
-    asteroid.update();
+    GameObject gameObject = gameObjects.get(i);
+    gameObject.update();
+    gameObject.render();
   }
   
-  // Menu
-  if(mainMenu == true)
-  {
-    fill(200);
-    noStroke();
-    rect(0, 0, width, height);
-    fill(0);
-    text("ASTEROIDS", 300 , 110);
-    fill(255);
-    rect(width / 2 - 150, height / 2 - 100, 300, 200);
-    fill(0);
-    textSize(30);
-    text("Welcome!", 333, 230);
-    line(320, 240, 480, 240);
-    textSize(20);
-    text("USE W, A + D TO MOVE", 330, 280);
-    text("SPACE TO SHOOT", 305, 300);
-    text("Press any key to continue", 280, 340);
-    text("Enjoy!", 375, 380);
-    textSize(15);
-    text("Jack Coogan - C15729315", 10, 590);
-    
-    if(mainMenu == true
-    && keyPressed)
-    {
-      mainMenu = false;
-    }
-  }
+  // Calls the Main Menu function
+  mainMenu();
 }

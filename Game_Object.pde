@@ -39,9 +39,6 @@ class GameObject
   {
     position = new PVector(x, y);
     aiPosition = new PVector(x, y);
-    starPosition = new PVector(x, y);
-    bulletPosition = new PVector(x, y);
-    playerPosition = new PVector(x, y);
     
     forward = new PVector(0, -1);
     velocity = new PVector(0, 0);
