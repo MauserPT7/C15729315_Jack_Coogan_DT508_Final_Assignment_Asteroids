@@ -12,7 +12,7 @@ class Bullet extends GameObject
     radius = 50;
   }
   
-  void renderBullet()
+  void render()
   {
     pushMatrix();
     
@@ -38,7 +38,7 @@ class Bullet extends GameObject
   {
     for(Asteroid asteroid : asteroids)
     {
-      PVector distance = PVector.sub(bullet.bulletPosition, asteroid.position);
+      PVector distance = PVector.sub(position, asteroid.position);
       
       if(distance.magSq() <= 150)
       {
@@ -50,7 +50,7 @@ class Bullet extends GameObject
     return false;
   }
   
-  void updateBullet()
+  void update()
   {
     forward.x = sin(theta) * 10;
     forward.y = - cos(theta) * 10;

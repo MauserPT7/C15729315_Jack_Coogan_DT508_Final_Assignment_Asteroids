@@ -1,14 +1,5 @@
 // C15729315 Jack Coogan DT508 Final Programming Assignment
 
-// Essential! You need to create the instance
-// by calling the constructor, otherwise you will generate a NullPointerException
-
-// distance over time; Dis = Time x S
-// rate of chnage of speed; Vel = Acc x Time; meters/second every second
-// Chnage in speed; deltaSpeed / deltaTime
-// Change in accerlation; time = 
-// Mass, Acceleration, Force; A = F / M
-
 import ddf.minim.*;
 
 AudioPlayer[] audioPlayer;
@@ -99,8 +90,8 @@ void draw()
   for(int i = 0 ; i < bullets.size() ; i++)
   {
     Bullet bullet = bullets.get(i);
-    bullet.updateBullet();
-    bullet.renderBullet();
+    bullet.update();
+    bullet.render();
   }
   
   // Deals with keeping the total amount of bullets allowed in the scene at 3.
