@@ -6,7 +6,7 @@ class Player extends GameObject
   PVector speed;
   PVector acceleration;
   PVector force;
-
+  
   Player()
   {
     super();
@@ -18,6 +18,15 @@ class Player extends GameObject
     force = new PVector();
     acceleration = new PVector();
     mass = 0.7f;
+    isDead = false;
+  }
+  
+  void dead()
+  {
+    if(isDead == true)
+    {
+      gameObjects.remove(this);
+    }
   }
   
   void render()
@@ -45,12 +54,35 @@ class Player extends GameObject
     popMatrix();
   }
   
+  boolean playerCollisionCheck(ArrayList < Asteroid > asteroids)
+  {
+    for(Asteroid asteroid : asteroids)
+    {
+      PVector distance = PVector.sub(position, asteroid.position);
+      
+      if(distance.mag() < asteroid.radius)
+      {
+        println("You are Dead!");
+        audioPlayer[3].rewind();
+        audioPlayer[3].play();
+        mainMenu = true;
+        score = 0;
+        dead();
+        return true;
+      }
+    }
+    
+    return false;
+  }
+  
   void update()
   {
     forward.x = sin(theta) * shipSpeed;
     forward.y = - cos(theta) * shipSpeed;
     
     shotRate--;
+    
+    playerCollisionCheck(asteroids);
    
     if(position.y <= -10)
     {
@@ -78,6 +110,7 @@ class Player extends GameObject
       
       ExhaustFumes ex = new ExhaustFumes(position.x, position.y, theta);
       gameObjects.add(ex);
+      //audioPlayer[0].rewind();
       audioPlayer[0].play();
     }
     
@@ -106,9 +139,9 @@ class Player extends GameObject
       if(shotRate <= 0)
       {
         bullets.add(bullet);
-        shotRate = 30;
-        audioPlayer[1].play();
+        shotRate = 30;        
         audioPlayer[1].rewind();
+        audioPlayer[1].play();
       }
     }
     

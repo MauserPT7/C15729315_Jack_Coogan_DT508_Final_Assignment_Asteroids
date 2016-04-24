@@ -26,6 +26,7 @@ class GameObject
   int shotRate;
   int shotTime;
   int bulletLifetime;
+  float hitArea;
   
   GameObject(float x, float y)
   {
@@ -37,9 +38,11 @@ class GameObject
     
     offset = 20;
     shipSpeed = 2.5;
+    isDead = false;
     
     shotRate = 30;
     bulletLifetime = 120;
+    hitArea = 30;
     
     alpha = 100;
     exhaustSize = random(5, 30);

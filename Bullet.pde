@@ -10,8 +10,6 @@ class Bullet extends GameObject
   {
     super(x, y);
     this.theta = theta;
-    
-    radius = 50;
   }
   
   void render()
@@ -33,15 +31,17 @@ class Bullet extends GameObject
     popMatrix();
   }
   
-  boolean collisionCheck(ArrayList < Asteroid > asteroids)
+  boolean bulletCollisionCheck(ArrayList < Asteroid > asteroids)
   {
     for(Asteroid asteroid : asteroids)
     {
-      PVector distance = PVector.sub(bullet.position, asteroid.position);
+      PVector distance = PVector.sub(position, asteroid.position);
       
-      if(distance.mag() <= 1000)
+      if(distance.mag() < asteroid.radius)
       {
         println("Direct Hit!");
+        asteroid.destroyAsteroid(asteroids);
+        bullets.remove(this);
         return true;
       }
     }
@@ -57,6 +57,8 @@ class Bullet extends GameObject
     position.add(forward);
     
     bulletLifetime--;
+    
+    bulletCollisionCheck(asteroids);
 
     if(position.y <= -10)
     {

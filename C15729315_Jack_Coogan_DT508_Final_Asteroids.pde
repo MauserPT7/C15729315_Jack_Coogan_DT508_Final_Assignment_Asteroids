@@ -30,6 +30,11 @@ PVector speed;
 PVector acceleration;
 PVector force;
 
+boolean isDead;
+
+int score;
+int highScore;
+
 void setup()
 {
   size(1200, 600);
@@ -51,11 +56,12 @@ void setup()
   
   // Setting up the audio files and library
   minim = new Minim(this);
-  audioPlayer = new AudioPlayer[2];
+  audioPlayer = new AudioPlayer[4];
   
   audioPlayer[0] = minim.loadFile("thrusters.wav");
   audioPlayer[1] = minim.loadFile("lazer.wav");
-  //audioPlayers[0].loop();
+  audioPlayer[2] = minim.loadFile("asteroidExplosion.wav");
+  audioPlayer[3] = minim.loadFile("playerDeath.wav");
   
   // Calculates position for the stars in the array
   for(int i = 0 ; i < starCount ; i++)
@@ -81,6 +87,11 @@ void draw()
     star.render();
     star.update();
   }
+  
+  // Score
+  fill(50, 220, 50);
+  textSize(30);
+  text("Score: " + score, 10, 30);
   
   // Renders asteroids
   for(int i = 0 ; i < asteroids.size() ; i++)
@@ -118,6 +129,8 @@ void draw()
       gameObject.render();
     }
   }
+  
+ 
   
   // Calls the Main Menu function
   mainMenu();
