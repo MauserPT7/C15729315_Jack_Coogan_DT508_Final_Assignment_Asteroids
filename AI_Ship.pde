@@ -18,6 +18,7 @@ class AIShip extends GameObject
     translate(position.x, position.y);
     rotate(theta);
     
+    // Outer Glow
     strokeWeight(8);
     strokeCap(BEVEL);
     stroke(225, 0, 0);
@@ -25,13 +26,16 @@ class AIShip extends GameObject
     noFill();
     
     quad(0, offset + (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
+    
     line(8, -18, 10, 0);
     line(-8, -18, -10, 0);
     
+    // Inner Glow
     strokeWeight(3);
     stroke(100, 0, 0);
     
     quad(0, offset + (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
+    
     line(8, -15, 10, 0);
     line(-8, -15, -10, 0);
     
@@ -39,6 +43,24 @@ class AIShip extends GameObject
     //ellipse(0, 0, 5, 5);
     
     popMatrix();
+  }
+  
+  // Check for collision against an bullet
+  boolean bulletCollisionCheck(ArrayList < Bullet > bullets)
+  {
+    for(Bullet bullet : bullets)
+    {
+      PVector distance = PVector.sub(position, bullet.position);
+      
+      if(distance.mag() < bullet.radius + 30)
+      {
+        gameObjects.remove(this);
+        score += 1000;
+        return true;
+      }
+    }
+    
+    return false;
   }
   
   void update()
@@ -50,6 +72,8 @@ class AIShip extends GameObject
    
     ExhaustFumes ex = new ExhaustFumes(position.x, position.y, theta);
     gameObjects.add(ex);
+    
+    bulletCollisionCheck(bullets);
     
     if(position.y <= 28)
     {

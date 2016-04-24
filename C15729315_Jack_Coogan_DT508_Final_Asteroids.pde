@@ -13,8 +13,10 @@ Bullet bullet;
 Star star;
 Asteroid asteroid;
 
-boolean[] keys;
+boolean[] keys;          // A boolean array for each key used in the game
 boolean mainMenu = true; // Checks if to display the main menu or not
+boolean isDead; // Check for the player being dead
+boolean gameOver = false;
 
 // Objects that are duplicated are put into arrays
 ArrayList < GameObject > gameObjects = new ArrayList < GameObject > ();
@@ -25,21 +27,21 @@ ArrayList < Asteroid > asteroids = new ArrayList < Asteroid > ();
 float asteroidCount;
 float starCount;
 float mass;
+float textShadow = 20;
+float textColour = color(50, 220, 50);
 
 PVector speed;
 PVector acceleration;
 PVector force;
 
-boolean isDead;
-
-int score;
-int highScore;
+int score; // current in-game score
+int highScore; // overall high score
 int totalAsteroids;
 
 void setup()
 {
   fullScreen();
-  // size(1200, 600);
+  //size(1200, 600);
   smooth();
   
   // How many of each there should be
@@ -49,13 +51,14 @@ void setup()
   gameObjects.add(new AIShip(50, 50));
   gameObjects.add(new Player(width / 2, height / 2));
 
-  keys = new boolean[6];
+  keys = new boolean[7];
   keys[0] = false; // 'w'
   keys[1] = false; // 's'
   keys[2] = false; // 'a'
   keys[3] = false; // 'd'
   keys[4] = false; // 'space'
   keys[5] = false; // 'p'
+  keys[6] = false; // 'r'
   
   // Setting up the audio files and library
   minim = new Minim(this);
@@ -76,6 +79,7 @@ void setup()
   for(int i = 0 ; i < asteroidCount ; i++)
   {
     asteroids.add(new Asteroid(random(10, width - 10), random(10, height - 10), 0));
+    totalAsteroids += 1;
   }
 }
 
@@ -102,6 +106,12 @@ void draw()
     Asteroid asteroid = asteroids.get(i);
     asteroid.render();
     asteroid.update();
+  }
+  
+  if(totalAsteroids <= 9)
+  {
+    asteroids.add(new Asteroid(random(10, width - 10), random(10, height - 10), 0));
+    totalAsteroids ++;
   }
 
   // Renders bullets, when shot
@@ -133,11 +143,15 @@ void draw()
     }
   }
   
-  // Calls the Main Menu function
+  // Calls UI functions
   mainMenu();
+  gameOver();
   
   if(keys[5])
   {
     mainMenu = true;
   }
+  
+  // Debugging
+  println(totalAsteroids);
 }

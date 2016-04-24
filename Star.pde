@@ -60,17 +60,20 @@ class Star extends GameObject
       position.x = width;
     }
 
-    if (keys[0])
+    if (keys[0]
+    && isDead == true)
     {
       force.add(PVector.mult(forward, -100));
     }
 
-    if (keys[2])
+    if (keys[2]
+    && isDead == true)
     {
       theta -= 0.1f;
     }
 
-    if (keys[3])
+    if (keys[3]
+    && isDead == true)
     {
       theta += 0.1;
     }

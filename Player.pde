@@ -21,14 +21,6 @@ class Player extends GameObject
     isDead = false;
   }
   
-  void dead()
-  {
-    if(isDead == true)
-    {
-      gameObjects.remove(this);
-    }
-  }
-  
   void render()
   {   
     pushMatrix();
@@ -36,18 +28,25 @@ class Player extends GameObject
     translate(position.x, position.y);
     rotate(theta);                     
     
+    // Outer Glow
     strokeWeight(8);
     stroke(0, 200, 250);
-    noFill();
     strokeCap(BEVEL);
+    
+    noFill();
+    
     line(8, -23, 8, -3);
     line(-8, -23, -8, -3);
+    
     quad(0, (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     
+    // Inner Glow
     strokeWeight(3);
     stroke(0, 100, 200);
+    
     line(8, -20, 10, 0);
     line(-8, -20, -10, 0);
+    
     quad(0, (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     
     popMatrix();
@@ -61,12 +60,12 @@ class Player extends GameObject
       
       if(distance.mag() < asteroid.radius + 10)
       {
-        println("You are Dead!");
         audioPlayer[3].rewind();
         audioPlayer[3].play();
-        mainMenu = true;
+        gameOver = true;
         score = 0;
-        dead();
+        isDead = true;
+        gameObjects.remove(this);
         return true;
       }
     }

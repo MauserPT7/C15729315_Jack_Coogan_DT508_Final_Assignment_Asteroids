@@ -9,6 +9,7 @@ void mainMenu()
   
   if(mainMenu == true)
   {    
+    rectMode(CORNER);
     stroke(50, 220, 50);
     strokeWeight(3);
     
@@ -17,10 +18,10 @@ void mainMenu()
     rect(width / 2 - 175, height / 2 - 105, 310, 220);
     rect(width / 2 - 170, height / 2 - 100, 300, 210);
     
-    fill(30);
+    fill(textShadow);
     
-    textSize(50);
-    text("ASTEROIDS", width / 2 - 146 , height / 2 - 118);
+    textSize(80);
+    text("ASTEROIDS", width / 2 - 201 , height / 2 - 118);
     
     textSize(30);
     text("High Score: " + highScore, width / 2 - 156, height / 2 - 58);
@@ -36,8 +37,8 @@ void mainMenu()
     
     fill(50, 220, 50);
     
-    textSize(50);
-    text("ASTEROIDS", width / 2 - 150 , height / 2 - 120);
+    textSize(80);
+    text("ASTEROIDS", width / 2 - 205 , height / 2 - 120);
     
     textSize(30);
     text("High Score: " + highScore, width / 2 - 160, height / 2 - 60);
@@ -54,7 +55,9 @@ void mainMenu()
     if(mainMenu == true
     && keyPressed)
     {
+      isDead = false;
       mainMenu = false;
+      gameObjects.add(new Player(width / 2, height / 2));
     }
   }
 }

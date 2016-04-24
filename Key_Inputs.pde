@@ -30,6 +30,11 @@ void keyPressed()
   {
     keys[5] = true;
   }
+  
+  if(key == 'r')
+  {
+    keys[6] = true;
+  }
 }
 
 void keyReleased()
@@ -62,5 +67,10 @@ void keyReleased()
   if(key == 'p')
   {
     keys[5] = false;
+  }
+  
+  if(key == 'r')
+  {
+    keys[6] = false;
   }
 }

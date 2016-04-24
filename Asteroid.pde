@@ -23,17 +23,23 @@ class Asteroid extends GameObject
     translate(position.x, position.y);
     rotate(theta);
     
+    // Outer Glow
+    rectMode(CENTER);
+    
     noFill();
     
     strokeWeight(16);
     stroke(140);
     
+    // Inner Glow
     ellipse(0, 0, radius + (radius / 5), radius + (radius / 5));
+    rect(0, 0, radius, radius);
     
     strokeWeight(6);
     stroke(100);
     
     ellipse(0, 0, radius + (radius / 5), radius + (radius / 5));
+    rect(0, 0, radius, radius);
     
     // Center-Point
     //ellipse(0, 0, 5, 5);
@@ -73,9 +79,14 @@ class Asteroid extends GameObject
   
   void destroyAsteroid(ArrayList < Asteroid > asteroids)
   {
-    score += 100;
+    if(isDead == false)
+    {
+      score += 100;
+    }
+    
     audioPlayer[2].play();
     audioPlayer[2].rewind();
+    totalAsteroids --;
     asteroids.remove(this);
   }
 }
