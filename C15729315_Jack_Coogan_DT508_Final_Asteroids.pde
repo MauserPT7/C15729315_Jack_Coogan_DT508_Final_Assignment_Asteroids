@@ -37,6 +37,7 @@ PVector force;
 int score; // current in-game score
 int highScore; // overall high score
 int totalAsteroids;
+int playerLives;
 
 void setup()
 {
@@ -47,9 +48,9 @@ void setup()
   // How many of each there should be
   asteroidCount = 10;
   starCount = 255;
+  playerLives = 3;
   
   gameObjects.add(new AIShip(50, 50));
-  gameObjects.add(new Player(width / 2, height / 2));
 
   keys = new boolean[7];
   keys[0] = false; // 'w'
@@ -99,6 +100,7 @@ void draw()
   fill(50, 220, 50);
   textSize(30);
   text("Score: " + score, 10, 30);
+  text("Lives: " + playerLives , 200 , 30);
   
   // Renders asteroids
   for(int i = 0 ; i < asteroids.size() ; i++)

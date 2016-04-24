@@ -14,6 +14,7 @@ void gameOver()
   
   if(keys[6] == true)
   {
+    playerLives = 3;
     gameOver = false;
     mainMenu = true;
   }

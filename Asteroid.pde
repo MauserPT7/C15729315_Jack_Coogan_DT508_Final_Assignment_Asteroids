@@ -49,8 +49,8 @@ class Asteroid extends GameObject
   
   void update()
   {
-    forward.x = sin(trajectory) * trajectory;
-    forward.y = - cos(trajectory) * trajectory;
+    forward.x = sin(theta) * trajectory;
+    forward.y = - cos(theta) * trajectory;
     
     position.add(forward);
     
