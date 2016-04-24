@@ -11,6 +11,7 @@ void mainMenu()
   {
     
     stroke(50, 220, 50);
+    strokeWeight(3);
     
     fill(10, 20, 100);
     

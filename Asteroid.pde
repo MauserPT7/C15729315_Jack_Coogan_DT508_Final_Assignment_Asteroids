@@ -13,7 +13,7 @@ class Asteroid extends GameObject
     theta = random(-200, 200);
     trajectory = random(-2, 2);
     
-    radius = random(10, 35);
+    radius = random(20, 45);
   }
   
   void render()
@@ -25,12 +25,12 @@ class Asteroid extends GameObject
     
     noFill();
     
-    strokeWeight(8);
+    strokeWeight(16);
     stroke(140);
     
     ellipse(0, 0, radius + (radius / 5), radius + (radius / 5));
     
-    strokeWeight(3);
+    strokeWeight(6);
     stroke(100);
     
     ellipse(0, 0, radius + (radius / 5), radius + (radius / 5));

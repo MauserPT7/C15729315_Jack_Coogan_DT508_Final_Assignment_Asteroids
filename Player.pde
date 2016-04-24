@@ -60,7 +60,7 @@ class Player extends GameObject
     {
       PVector distance = PVector.sub(position, asteroid.position);
       
-      if(distance.mag() < asteroid.radius)
+      if(distance.mag() < asteroid.radius + 10)
       {
         println("You are Dead!");
         audioPlayer[3].rewind();
