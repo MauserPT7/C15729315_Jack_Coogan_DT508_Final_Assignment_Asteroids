@@ -50,7 +50,6 @@ class Player extends GameObject
     line(-8, -20, -10, 0);
     quad(0, (offset / 2), 0 + offset, 0 + offset, 0, 0 - offset, 0 - offset, 0 + offset);
     
-    
     popMatrix();
   }
   

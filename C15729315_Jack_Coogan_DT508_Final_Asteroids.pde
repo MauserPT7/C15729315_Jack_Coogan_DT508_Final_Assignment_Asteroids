@@ -34,10 +34,12 @@ boolean isDead;
 
 int score;
 int highScore;
+int totalAsteroids;
 
 void setup()
 {
-  size(1200, 600);
+  fullScreen();
+  // size(1200, 600);
   smooth();
   
   // How many of each there should be
@@ -47,12 +49,13 @@ void setup()
   gameObjects.add(new AIShip(50, 50));
   gameObjects.add(new Player(width / 2, height / 2));
 
-  keys = new boolean[5];
+  keys = new boolean[6];
   keys[0] = false; // 'w'
   keys[1] = false; // 's'
   keys[2] = false; // 'a'
   keys[3] = false; // 'd'
   keys[4] = false; // 'space'
+  keys[5] = false; // 'p'
   
   // Setting up the audio files and library
   minim = new Minim(this);
@@ -130,8 +133,11 @@ void draw()
     }
   }
   
- 
-  
   // Calls the Main Menu function
   mainMenu();
+  
+  if(keys[5])
+  {
+    mainMenu = true;
+  }
 }

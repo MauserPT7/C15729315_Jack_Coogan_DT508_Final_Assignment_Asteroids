@@ -8,8 +8,7 @@ void mainMenu()
   }
   
   if(mainMenu == true)
-  {
-    
+  {    
     stroke(50, 220, 50);
     strokeWeight(3);
     
@@ -18,7 +17,7 @@ void mainMenu()
     rect(width / 2 - 175, height / 2 - 105, 310, 220);
     rect(width / 2 - 170, height / 2 - 100, 300, 210);
     
-    fill(20);
+    fill(30);
     
     textSize(50);
     text("ASTEROIDS", width / 2 - 146 , height / 2 - 118);
@@ -27,13 +26,13 @@ void mainMenu()
     text("High Score: " + highScore, width / 2 - 156, height / 2 - 58);
     
     textSize(20);
-    text("Use W, A + D to move", width / 2 - 126, 282);
-    text("Use SPACE to shoot", width / 2 - 121, 312);
-    text("Press any key to continue", width / 2 - 136, 362);
-    text("Enjoy!", width / 2 - 46, 392);
+    text("Use W, A + D to move", width / 2 - 126, height / 2 - 16);
+    text("Use SPACE to shoot", width / 2 - 121, height / 2 + 4);
+    text("Press any key to continue", width / 2 - 136, height / 2 + 54);
+    text("Enjoy!", width / 2 - 46, height / 2 + 84);
     
     textSize(15);
-    text("Jack Coogan - C15729315", 10, 590);
+    text("Jack Coogan - C15729315", 14, height - 6);
     
     fill(50, 220, 50);
     
@@ -44,13 +43,13 @@ void mainMenu()
     text("High Score: " + highScore, width / 2 - 160, height / 2 - 60);
     
     textSize(20);
-    text("Use W, A + D to move", width / 2 - 130, 280);
-    text("Use SPACE to shoot", width / 2 - 125, 310);
-    text("Press any key to continue", width / 2 - 140, 360);
-    text("Enjoy!", width / 2 - 50, 390);
+    text("Use W, A + D to move", width / 2 - 130, height / 2 - 20);
+    text("Use SPACE to shoot", width / 2 - 125, height / 2);
+    text("Press any key to continue", width / 2 - 140, height / 2 + 50);
+    text("Enjoy!", width / 2 - 50, height / 2 + 80);
     
     textSize(15);
-    text("Jack Coogan - C15729315", 10, 590);
+    text("Jack Coogan - C15729315", 10, height - 10);
     
     if(mainMenu == true
     && keyPressed)
