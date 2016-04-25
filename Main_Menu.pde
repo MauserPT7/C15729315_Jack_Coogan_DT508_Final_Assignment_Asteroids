@@ -7,7 +7,8 @@ void mainMenu()
     highScore = score;
   }
   
-  if(mainMenu == true)
+  if(mainMenu == true
+  && gameOver == false)
   {    
     rectMode(CORNER);
     stroke(50, 220, 50);
@@ -57,7 +58,6 @@ void mainMenu()
     {
       isDead = false;
       mainMenu = false;
-      gameObjects.add(new Player(width / 2, height / 2));
     }
   }
 }

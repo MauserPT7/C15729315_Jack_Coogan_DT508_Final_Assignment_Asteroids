@@ -52,13 +52,14 @@ class Player extends GameObject
     popMatrix();
   }
   
+  // Checks for when the players crashes into an asteroid
   boolean playerCollisionCheck(ArrayList < Asteroid > asteroids)
   {
     for(Asteroid asteroid : asteroids)
     {
       PVector distance = PVector.sub(position, asteroid.position);
       
-      if(distance.mag() < asteroid.radius + 10)
+      if(distance.mag() < asteroid.radius + 13)
       {
         audioPlayer[3].rewind();
         audioPlayer[3].play();
@@ -92,6 +93,8 @@ class Player extends GameObject
     shotRate--;
     
     playerCollisionCheck(asteroids);
+    
+    isDead = false;
    
     if(position.y <= -10)
     {
@@ -140,6 +143,7 @@ class Player extends GameObject
       theta += 0.1;
     }
     
+    // Handles the firing and fire rate of bullets
     if(keys[4]
     && bullets.size() <= 2)
     {
