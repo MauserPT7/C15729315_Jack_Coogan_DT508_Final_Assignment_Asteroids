@@ -16,8 +16,8 @@ void mainMenu()
     
     fill(10, 20, 100);
     
-    rect(width / 2 - 175, height / 2 - 105, 310, 220);
-    rect(width / 2 - 170, height / 2 - 100, 300, 210);
+    rect(width / 2 - 155, height / 2 - 105, 310, 220);
+    rect(width / 2 - 150, height / 2 - 100, 300, 210);
     
     fill(textShadow);
     
@@ -25,11 +25,11 @@ void mainMenu()
     text("ASTEROIDS", width / 2 - 201 , height / 2 - 118);
     
     textSize(30);
-    text("High Score: " + highScore, width / 2 - 156, height / 2 - 58);
+    text("High Score: " + highScore, width / 2 - 126, height / 2 - 58);
     
     textSize(20);
-    text("Use W, A + D to move", width / 2 - 126, height / 2 - 16);
-    text("Use SPACE to shoot", width / 2 - 121, height / 2 + 4);
+    text("Use W, A + D to move", width / 2 - 106, height / 2 - 16);
+    text("Use SPACE to shoot", width / 2 - 81, height / 2 + 4);
     text("Press any key to continue", width / 2 - 136, height / 2 + 54);
     text("Enjoy!", width / 2 - 46, height / 2 + 84);
     
@@ -42,13 +42,13 @@ void mainMenu()
     text("ASTEROIDS", width / 2 - 205 , height / 2 - 120);
     
     textSize(30);
-    text("High Score: " + highScore, width / 2 - 160, height / 2 - 60);
+    text("High Score: " + highScore, width / 2 - 130, height / 2 - 65);
     
     textSize(20);
-    text("Use W, A + D to move", width / 2 - 130, height / 2 - 20);
-    text("Use SPACE to shoot", width / 2 - 125, height / 2);
-    text("Press any key to continue", width / 2 - 140, height / 2 + 50);
-    text("Enjoy!", width / 2 - 50, height / 2 + 80);
+    text("Use W, A + D to move", width / 2 - 100, height / 2 - 20);
+    text("Use SPACE to shoot", width / 2 - 95, height / 2);
+    text("Press any key to continue", width / 2 - 120, height / 2 + 50);
+    text("Enjoy!", width / 2 - 30, height / 2 + 80);
     
     textSize(15);
     text("Jack Coogan - C15729315", 10, height - 10);

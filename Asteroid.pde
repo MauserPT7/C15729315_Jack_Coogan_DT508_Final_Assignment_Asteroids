@@ -100,12 +100,10 @@ class Asteroid extends GameObject
   // Handles what happens when different sized asteroids are destroyed
   // Is called by the bullet
   void destroyAsteroid(ArrayList < Asteroid > asteroids)
-  {
+  {    
     if(asteroidSize == 0
     && isDead == false)
-    {
-      totalAsteroids --;
-      
+    {      
       for(int i = 0 ; i < 2 ; i++)
       {
         float theta = random(2 * PI);
@@ -120,8 +118,6 @@ class Asteroid extends GameObject
     if(asteroidSize == 1
     && isDead == false)
     {
-      totalAsteroids --;
-      
       for(int i = 0 ; i < 2 ; i++)
       {
         float theta = random(2 * PI);
@@ -129,7 +125,6 @@ class Asteroid extends GameObject
         asteroids.add(new Asteroid(position.x, position.y, 2));
       }
       
-      totalAsteroids --;
       score += 200;
       asteroids.remove(this);
     }
@@ -141,6 +136,7 @@ class Asteroid extends GameObject
       asteroids.remove(this);
     }
     
+    totalAsteroids --;
     audioPlayer[2].play();
     audioPlayer[2].rewind();
   }
