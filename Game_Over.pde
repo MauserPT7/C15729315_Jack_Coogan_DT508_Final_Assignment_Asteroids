@@ -14,6 +14,7 @@ void gameOver()
   
   if(keys[6] == true)
   {
+    gameObjects.remove(player);
     playerLives = 3;
     gameOver = false;
     mainMenu = true;

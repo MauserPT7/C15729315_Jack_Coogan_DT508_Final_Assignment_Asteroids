@@ -95,6 +95,7 @@ class Asteroid extends GameObject
     }
   }
   
+  // Handles what happens when different sized asteroids are destroyed
   void destroyAsteroid(ArrayList < Asteroid > asteroids)
   {
     if(asteroidSize == 0
