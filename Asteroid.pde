@@ -11,9 +11,27 @@ class Asteroid extends GameObject
     super(x, y);
     
     theta = random(-200, 200);
-    trajectory = random(-2, 2);
+    trajectory = random(-3, 3);
     
-    radius = random(20, 45);
+    asteroidSize = size;
+    
+    // Large
+    if(size == 0)
+    {
+      radius = 50;
+    }
+    
+    // Medium
+    if(size == 1)
+    {
+      radius = 30;
+    }
+    
+    // Small
+    if(size == 2)
+    {
+      radius = 15;
+    }
   }
   
   void render()
@@ -54,7 +72,7 @@ class Asteroid extends GameObject
     
     position.add(forward);
     
-    theta -= 0.01f;
+    //theta -= 0.01f;
     
     if(position.y <= -10)
     {
@@ -79,14 +97,42 @@ class Asteroid extends GameObject
   
   void destroyAsteroid(ArrayList < Asteroid > asteroids)
   {
-    if(isDead == false)
+    if(asteroidSize == 0
+    && isDead == false)
     {
+      for(int i = 0 ; i < 2 ; i++)
+      {
+        float theta = random(2 * PI);
+        PVector newRotation = new PVector(radius * sin(theta), radius * cos(theta));
+        asteroids.add(new Asteroid(position.x, position.y, 1));
+      }
+      
       score += 100;
+      asteroids.remove(this);
+    }
+    
+    if(asteroidSize == 1
+    && isDead == false)
+    {
+      for(int i = 0 ; i < 2 ; i++)
+      {
+        float theta = random(2 * PI);
+        PVector newRotation = new PVector(radius * sin(theta), radius * cos(theta));
+        asteroids.add(new Asteroid(position.x, position.y, 2));
+      }
+      
+      score += 200;
+      asteroids.remove(this);
+    }
+    
+    if(asteroidSize == 2
+    && isDead == false)
+    {
+      score += 500;
+      asteroids.remove(this);
     }
     
     audioPlayer[2].play();
     audioPlayer[2].rewind();
-    totalAsteroids --;
-    asteroids.remove(this);
   }
 }

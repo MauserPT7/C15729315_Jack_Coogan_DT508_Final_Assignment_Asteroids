@@ -20,6 +20,7 @@ class GameObject
   
   // Asteroids
   float radius;
+  float asteroidSize;
   float trajectory;
   
   // Bullets

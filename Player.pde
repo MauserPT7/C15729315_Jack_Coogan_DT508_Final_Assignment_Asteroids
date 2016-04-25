@@ -62,21 +62,21 @@ class Player extends GameObject
       {
         audioPlayer[3].rewind();
         audioPlayer[3].play();
-        score = 0;
-        gameObjects.remove(this);
         
         if(playerLives <= 0)
         {
+          score = 0;
           isDead = true;
           gameOver = true;
         }
         
-        else
+        else if(gameOver == false)
         {
           playerLives -= 1;
           gameObjects.add(new Player(width / 2, height / 2));
         }
         
+        gameObjects.remove(this);
         return true;
       }
     }

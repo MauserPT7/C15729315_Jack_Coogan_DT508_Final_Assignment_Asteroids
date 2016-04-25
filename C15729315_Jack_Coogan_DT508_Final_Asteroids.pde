@@ -100,7 +100,7 @@ void draw()
   fill(50, 220, 50);
   textSize(30);
   text("Score: " + score, 10, 30);
-  text("Lives: " + playerLives , 200 , 30);
+  text("Lives: " + playerLives , 220 , 30);
   
   // Renders asteroids
   for(int i = 0 ; i < asteroids.size() ; i++)
@@ -110,12 +110,14 @@ void draw()
     asteroid.update();
   }
   
+  /*
   if(totalAsteroids <= 9)
   {
-    asteroids.add(new Asteroid(random(10, width - 10), random(10, height - 10), 0));
+    asteroids.add(new Asteroid(random(10, width - 10), random(10, height - 10)));
     totalAsteroids ++;
   }
-
+  */
+  
   // Renders bullets, when shot
   for(int i = 0 ; i < bullets.size() ; i++)
   {
@@ -124,6 +126,7 @@ void draw()
     bullet.render();
   }
   
+  /*
   // Deals with keeping the total amount of bullets allowed in the scene at 3.
   for(int i = bullets.size() - 1 ; i >= 0 ; i--)
   {
@@ -133,6 +136,7 @@ void draw()
       bullets.remove(0);
     }
   }
+  */
   
   // Renders other objects like the player and ai
   for(int i = 0 ; i < gameObjects.size() ; i++)
@@ -151,6 +155,11 @@ void draw()
   
   if(keys[5])
   {
+    for(int i = 0 ; i < gameObjects.size() ; i++)
+    {
+      GameObject gameObject = gameObjects.remove(i);
+    }
+    
     mainMenu = true;
   }
   
