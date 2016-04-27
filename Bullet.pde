@@ -46,7 +46,7 @@ class Bullet extends GameObject
     {
       PVector distance = PVector.sub(position, asteroid.position);
       
-      if(distance.mag() < asteroid.radius)
+      if(distance.mag() < asteroid.radius + 5)
       {
         asteroid.destroyAsteroid(asteroids);
         bullets.remove(this);
