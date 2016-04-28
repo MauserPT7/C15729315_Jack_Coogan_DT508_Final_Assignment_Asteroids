@@ -51,7 +51,7 @@ void setup()
   playerLives = 3;
   
   gameObjects.add(new AIShip(random(10, width - 10), random(10, height - 10)));
-  gameObjects.add(new Player(130, height / 2 + 40));
+  gameObjects.add(new Player(width / 2, height / 2));
   // gameObjects.add(new Player(width / 2 + 60, height / 2 + 60));
   // gameObjects.add(new Player(width / 2 - 60, height / 2 + 60));
 
