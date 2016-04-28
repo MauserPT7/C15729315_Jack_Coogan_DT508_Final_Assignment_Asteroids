@@ -1,6 +1,13 @@
 // A red, AI ship that flies around
 class AIShip extends GameObject
 {
+  float mass;
+  float timeDelta = 1.0f / 60.0f;
+  float radius;
+  PVector speed;
+  PVector acceleration;
+  PVector force;
+  
   AIShip()
   {
     super();
@@ -9,6 +16,9 @@ class AIShip extends GameObject
   AIShip(float x, float y)
   {
     super(x, y);
+    force = new PVector();
+    acceleration = new PVector();
+    mass = 1.0f;
   }
   
   void render()
@@ -65,35 +75,56 @@ class AIShip extends GameObject
   
   void update()
   {
-    forward.x = sin(theta) * shipSpeed;
-    forward.y = - cos(theta) * shipSpeed;
-    
-    position.add(forward);
+    forward.x = sin(theta);
+    forward.y = - cos(theta);
    
     ExhaustFumes ex = new ExhaustFumes(position.x, position.y, theta);
     gameObjects.add(ex);
     
     bulletCollisionCheck(bullets);
     
-    if(position.y <= 28)
+    if(position.y <= -10)
     {
-      theta = radians(90);
+      position.y = height;
+    }
+      
+    if(position.x >= width + 10)
+    {
+      position.x = 0;
+    }
+      
+    if(position.y >= height + 10)
+    {
+      position.y = 0;
+    }
+      
+    if(position.x <= -10)
+    {
+      position.x = width;
     }
     
-    if(position.x >= width - 28)
+    if (keys[0]
+    && gameOver == false)
     {
-      theta = radians(180);
+      force.add(PVector.mult(forward, 400));
     }
-    
-    if(position.y >= height - 28)
+
+    if (keys[2]
+    && gameOver == false)
     {
-      theta = radians(270);
+      theta -= 0.1f;
     }
-    
-    if(position.x <= 28
-    && position.y >= 28)
+
+    if (keys[3]
+    && gameOver == false)
     {
-      theta = radians(0);
+      theta += 0.1;
     }
+
+    acceleration = PVector.div(force, mass);
+    velocity.add(PVector.mult(acceleration, timeDelta));
+    position.add(PVector.mult(velocity, timeDelta));
+    velocity.mult(0.99f);
+    force.x = force.y = 0;
   }
 }
