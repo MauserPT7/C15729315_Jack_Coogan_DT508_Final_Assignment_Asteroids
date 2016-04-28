@@ -16,25 +16,29 @@ void mainMenu()
     
     fill(10, 20, 100);
     
-    rect(width / 2 - 155, height / 2 - 105, 310, 220);
-    rect(width / 2 - 150, height / 2 - 100, 300, 210);
+    rect(width / 2 - 155, height / 2 - 105, 310, 300);
+    rect(width / 2 - 150, height / 2 - 100, 300, 290);
+    
+    noFill();
+    rect(90, height / 2 - 5, 90, 80);
+    rect(95, height / 2, 80, 70);
     
     fill(textShadow);
     
     textSize(80);
-    text("ASTEROIDS", width / 2 - 201 , height / 2 - 118);
+    text("ASTEROIDS", width / 2 - 200 , height / 2 - 115);
     
     textSize(30);
-    text("High Score: " + highScore, width / 2 - 126, height / 2 - 58);
+    text("High Score: " + highScore, width / 2 - 125, height / 2 - 60);
     
     textSize(20);
-    text("Use W, A + D to move", width / 2 - 106, height / 2 - 16);
-    text("Use SPACE to shoot", width / 2 - 81, height / 2 + 4);
-    text("Press any key to continue", width / 2 - 136, height / 2 + 54);
-    text("Enjoy!", width / 2 - 46, height / 2 + 84);
+    text("Use W, A + D to move", width / 2 - 95, height / 2 - 15);
+    text("Use SPACE to shoot", width / 2 - 90, height / 2 + 5);
+    text("Press any key to continue", width / 2 - 115, height / 2 + 55);
+    text("Enjoy!", width / 2 - 25, height / 2 + 85);
     
     textSize(15);
-    text("Jack Coogan - C15729315", 14, height - 6);
+    text("Jack Coogan - C15729315", 15, height - 5);
     
     fill(50, 220, 50);
     
