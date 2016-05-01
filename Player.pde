@@ -75,6 +75,7 @@ class Player extends GameObject
         {
           playerLives -= 1;
           gameObjects.add(new Player(width / 2, height / 2));
+          gameObjects.add(new Warp(width / 2, height / 2));
         }
         
         gameObjects.remove(this);

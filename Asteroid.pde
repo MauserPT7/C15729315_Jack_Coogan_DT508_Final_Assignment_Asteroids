@@ -136,6 +136,14 @@ class Asteroid extends GameObject
       asteroids.remove(this);
     }
     
+    if(asteroidSize == 0
+    || asteroidSize == 1
+    || asteroidSize == 2
+    && warp == true)
+    {
+      asteroids.remove(this);
+    }
+    
     totalAsteroids --;
     audioPlayer[2].play();
     audioPlayer[2].rewind();

@@ -29,6 +29,10 @@ class GameObject
   int bulletLifetime;
   float hitArea;
   
+  // Warp
+  boolean warp;
+  float warpSize;
+  
   GameObject(float x, float y)
   {
     position = new PVector(x, y);
@@ -47,6 +51,8 @@ class GameObject
     
     alpha = 100;
     exhaustSize = random(5, 30);
+    
+    warpSize = 250;
   }
   
   GameObject()
