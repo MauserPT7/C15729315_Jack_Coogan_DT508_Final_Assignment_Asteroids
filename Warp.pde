@@ -1,3 +1,6 @@
+// The warp is a special effect that appears when the player spawns or respawns
+// The function of this is to destroy any asteroids...
+// ...that the player might spawn on top of, thus killing them immediatly.
 class Warp extends GameObject
 {
   Warp()
@@ -11,7 +14,12 @@ class Warp extends GameObject
   }
   
   void render()
-  {    
+  {
+    pushMatrix();
+    
+    translate(position.x, position.y);
+    rotate(theta);
+    
     strokeWeight(6);
     stroke(0, 0, 100, alpha);
     
@@ -19,6 +27,8 @@ class Warp extends GameObject
     
     ellipseMode(CENTER);
     ellipse(0, 0, warpSize, warpSize);
+    
+    popMatrix();
   }
   
   // Check for collision against an asteroid for safe respawning
@@ -28,7 +38,7 @@ class Warp extends GameObject
     {
       PVector distance = PVector.sub(position, asteroid.position);
       
-      if(distance.mag() < asteroid.radius + warpSize)
+      if(distance.mag() < asteroid.radius + (warpSize / 2))
       {
         asteroid.destroyAsteroid(asteroids);
         warp = true;
@@ -42,11 +52,11 @@ class Warp extends GameObject
   
   void update()
   {
-    warpSize --;
+    warpSize -= 3;
     
     warpCollisionCheck(asteroids);
     
-    if(warpSize <= 0)
+    if(warpSize <= 1)
     {
       warp = false;
       gameObjects.remove(this);

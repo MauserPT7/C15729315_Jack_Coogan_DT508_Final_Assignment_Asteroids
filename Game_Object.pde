@@ -1,4 +1,4 @@
-// This class is a global class for both the player and AI ships
+// This class is a global class for objects that only need to render once at a time; i.e. the player.
 class GameObject
 {
   // General positioning and game physics
