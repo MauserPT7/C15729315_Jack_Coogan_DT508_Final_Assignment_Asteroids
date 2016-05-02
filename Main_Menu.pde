@@ -14,6 +14,8 @@ void mainMenu()
     stroke(50, 220, 50);
     strokeWeight(3);
     
+    fill(10, 150);
+    
     rect(width / 2 + 50, height / 2 - 105, 440, 230);
     rect(width / 2 + 55, height / 2 - 100, 430, 220);
     

@@ -102,7 +102,8 @@ class Asteroid extends GameObject
   void destroyAsteroid(ArrayList < Asteroid > asteroids)
   {    
     if(asteroidSize == 0
-    && isDead == false)
+    && isDead == false
+    && warp == false)
     {      
       for(int i = 0 ; i < 2 ; i++)
       {
@@ -116,7 +117,8 @@ class Asteroid extends GameObject
     }
     
     if(asteroidSize == 1
-    && isDead == false)
+    && isDead == false
+    && warp == false)
     {
       for(int i = 0 ; i < 2 ; i++)
       {
@@ -130,7 +132,8 @@ class Asteroid extends GameObject
     }
     
     if(asteroidSize == 2
-    && isDead == false)
+    && isDead == false
+    && warp == false)
     {
       score += 500;
       asteroids.remove(this);
